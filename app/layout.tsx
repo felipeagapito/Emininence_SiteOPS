@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
+import { SmoothScroll } from "./components/smooth-scroll";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,13 +13,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const cormorant = Cormorant_Garamond({
+  variable: "--font-editorial",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "Eminence SiteOps — Sites que geram orçamentos",
+    default: "Eminence SiteOps — Experience Engineering",
     template: "%s | Eminence SiteOps",
   },
   description:
-    "Sites premium para prestadores locais, conectados ao WhatsApp e construídos para transformar confiança em pedidos de orçamento.",
+    "Direção de arte, motion, 3D e IA para construir experiências digitais originais e operacionais.",
   other: {
     "codex-preview": "development",
   },
@@ -36,8 +44,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} antialiased`}
       >
+        <SmoothScroll />
         {children}
       </body>
     </html>

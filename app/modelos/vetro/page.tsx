@@ -1,105 +1,185 @@
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowUpRight,
+  Maximize2,
+  MoveDiagonal2,
+} from "lucide-react";
 import Link from "next/link";
+import { ExperienceScene } from "../../components/experience-scene";
+import { Reveal } from "../../components/reveal";
 
 const quoteHref =
-  "https://wa.me/?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Vetro%20e%20quero%20um%20or%C3%A7amento.";
+  "https://wa.me/?text=Ol%C3%A1%2C%20vim%20pelo%20modelo%20Vetro%20e%20quero%20conversar%20sobre%20um%20projeto.";
 
 export default function VetroDemo() {
   return (
-    <main className="demo glass-demo">
-      <div className="demo-ribbon glass-ribbon">
-        <span>MODELO DEMONSTRATIVO • EMINENCE SITEOPS</span>
-        <Link href="/">Voltar para SiteOps ↗</Link>
+    <main className="vetro-experience">
+      <div className="vetro-lab-bar">
+        <span>EMINENCE SITEOPS / LIVE MODEL 02</span>
+        <Link href="/">
+          <ArrowLeft size={14} />
+          Voltar ao sistema
+        </Link>
       </div>
-      <header className="glass-nav">
-        <a className="glass-brand" href="#inicio" aria-label="Vetro — início">VETRO<span>°</span></a>
+
+      <header className="vetro-nav">
+        <a className="vetro-identity" href="#top">
+          VETRO<sup>°</sup>
+        </a>
         <nav aria-label="Navegação Vetro">
-          <a href="#solucoes">Soluções</a>
-          <a href="#projetos">Projetos</a>
+          <a href="#manifesto">Manifesto</a>
+          <a href="#material">Material</a>
           <a href="#processo">Processo</a>
         </nav>
-        <a className="glass-cta" href={quoteHref} target="_blank" rel="noreferrer">
-          Iniciar projeto ↗
+        <a href={quoteHref} target="_blank" rel="noreferrer">
+          Iniciar projeto
+          <ArrowUpRight size={15} />
         </a>
       </header>
 
-      <section className="glass-hero" id="inicio">
-        <div className="glass-hero-image" aria-hidden="true" />
-        <div className="glass-overlay" aria-hidden="true" />
-        <div className="glass-copy">
-          <p>Vidros e esquadrias sob medida</p>
-          <h1>Mais luz.<br />Menos limites.</h1>
-          <div className="glass-copy-bottom">
+      <section className="vetro-hero-new" id="top">
+        <div className="vetro-light" aria-hidden="true" />
+        <ExperienceScene className="vetro-scene" mode="glass" />
+        <div className="vetro-hero-index">
+          <span>01</span>
+          <i />
+          <span>MATTER / LIGHT / SPACE</span>
+        </div>
+
+        <div className="vetro-hero-copy">
+          <small>VIDRO ARQUITETÔNICO SOB MEDIDA</small>
+          <h1>
+            A luz entra.
+            <em>O limite desaparece.</em>
+          </h1>
+          <div className="vetro-hero-bottom">
             <p>
-              Projetos que combinam precisão, transparência e acabamento para
-              transformar a relação entre interior e arquitetura.
+              Soluções em vidro e esquadrias desenhadas para ampliar espaço,
+              preservar leveza e terminar a arquitetura com precisão.
             </p>
-            <a href={quoteHref} target="_blank" rel="noreferrer">Solicitar orçamento <span>↗</span></a>
+            <a href={quoteHref} target="_blank" rel="noreferrer">
+              Conversar sobre o espaço
+              <ArrowUpRight size={17} />
+            </a>
           </div>
         </div>
-        <div className="glass-index"><span>01</span><i /><small>RESIDENCIAL</small></div>
+
+        <a className="vetro-scroll" href="#manifesto">
+          <span>EXPLORE</span>
+          <ArrowDown size={16} />
+        </a>
       </section>
 
-      <section className="glass-statement">
-        <p>Do primeiro traço à instalação</p>
-        <h2>O vidro certo não ocupa o espaço. Ele revela.</h2>
-        <div>
-          <p>
-            Medimos, especificamos e instalamos cada peça para que estrutura,
-            transparência e movimento funcionem como um único elemento.
-          </p>
-          <a href="#solucoes">Explorar soluções ↓</a>
-        </div>
-      </section>
-
-      <section className="glass-solutions" id="solucoes">
-        {[
-          ["01", "Box & banho", "Leveza visual, ferragens selecionadas e instalação precisa."],
-          ["02", "Esquadrias", "Grandes vãos, vedação e desempenho para projetos contemporâneos."],
-          ["03", "Guarda-corpos", "Segurança normatizada com interferência visual mínima."],
-          ["04", "Espelhos", "Recortes, iluminação e composição sob medida para cada ambiente."],
-        ].map(([n, title, text]) => (
-          <article key={n}>
-            <span>{n}</span>
-            <div><h3>{title}</h3><p>{text}</p></div>
-            <a href={quoteHref} aria-label={`Solicitar orçamento de ${title}`}>↗</a>
-          </article>
-        ))}
-      </section>
-
-      <section className="glass-project" id="projetos">
-        <div className="glass-project-visual" aria-hidden="true"><span>PROJETO 01 / RESIDENCIAL</span></div>
-        <div className="glass-project-copy">
-          <p>Um projeto, três decisões certas</p>
-          <h2>Medida exata. Material adequado. Instalação limpa.</h2>
-          <div className="glass-metrics">
-            <span><strong>10 mm</strong>vidro temperado</span>
-            <span><strong>32 m²</strong>área instalada</span>
-            <span><strong>2 dias</strong>instalação</span>
+      <section className="vetro-manifesto" id="manifesto">
+        <Reveal className="vetro-section-index">
+          <span>01 / MANIFESTO</span>
+          <i />
+          <span>TRANSPARENCY WITH PURPOSE</span>
+        </Reveal>
+        <Reveal className="vetro-manifesto-copy">
+          <h2>
+            O melhor vidro não chama atenção para si.
+            <em>Ele muda a forma como o espaço é sentido.</em>
+          </h2>
+          <div>
+            <p>
+              Cada medida, espessura, ferragem e encontro interfere na luz, no
+              conforto e no uso. Por isso, a solução começa na arquitetura — não
+              no catálogo.
+            </p>
+            <a href="#material">
+              Explorar materialidade
+              <ArrowDown size={15} />
+            </a>
           </div>
-          <a href={quoteHref} target="_blank" rel="noreferrer">Quero avaliar meu projeto ↗</a>
+        </Reveal>
+      </section>
+
+      <section className="vetro-material" id="material">
+        <div className="vetro-material-image">
+          <span>REFRACTION STUDY / 01</span>
+          <i />
+        </div>
+        <div className="vetro-material-copy">
+          <Reveal>
+            <span>02 / MATERIAL</span>
+            <h2>Precisão que você quase não vê — mas sente.</h2>
+            <p>
+              Transparência não elimina estrutura. Ela exige que cada encontro
+              seja resolvido com ainda mais cuidado.
+            </p>
+          </Reveal>
+          <div className="material-specs">
+            {[
+              ["01", "Medida", "Leitura precisa do vão, prumo, nível e interferências."],
+              ["02", "Matéria", "Vidro, perfis e ferragens definidos pelo uso real."],
+              ["03", "Encontro", "Detalhes pensados para continuidade visual e segurança."],
+            ].map(([number, title, copy], index) => (
+              <Reveal delay={index * 0.06} key={number}>
+                <span>{number}</span>
+                <div><h3>{title}</h3><p>{copy}</p></div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="glass-process" id="processo">
-        <div><p>Nosso processo</p><h2>Clareza em cada etapa.</h2></div>
+      <section className="vetro-applications">
+        <Reveal className="vetro-applications-head">
+          <span>03 / APPLICATIONS</span>
+          <h2>O material muda. A precisão permanece.</h2>
+        </Reveal>
+        <div className="application-grid">
+          {[
+            ["01", "Divisórias", "Leveza visual para separar sem encerrar."],
+            ["02", "Fachadas", "Ritmo, proteção e continuidade arquitetônica."],
+            ["03", "Guarda-corpos", "Segurança integrada à linguagem do espaço."],
+            ["04", "Interiores", "Box, espelhos e detalhes com medida e acabamento."],
+          ].map(([number, title, copy], index) => (
+            <Reveal className="application-card" delay={index * 0.05} key={number}>
+              <span>{number}</span>
+              {index % 2 === 0 ? <Maximize2 size={21} /> : <MoveDiagonal2 size={21} />}
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="vetro-process" id="processo">
+        <Reveal className="vetro-process-title">
+          <span>04 / PROCESS</span>
+          <h2>Do espaço existente ao detalhe instalado.</h2>
+        </Reveal>
         <ol>
-          <li><span>01</span><strong>Conversa e referências</strong></li>
-          <li><span>02</span><strong>Medição técnica</strong></li>
-          <li><span>03</span><strong>Produção sob medida</strong></li>
-          <li><span>04</span><strong>Instalação e revisão</strong></li>
+          {[
+            ["01", "Leitura", "Entendemos arquitetura, uso e intenção."],
+            ["02", "Definição", "Escolhemos sistema, vidro e acabamento."],
+            ["03", "Precisão", "Conferimos medidas e detalhes de encontro."],
+            ["04", "Instalação", "Executamos com proteção e revisão final."],
+          ].map(([number, title, copy]) => (
+            <li key={number}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </li>
+          ))}
         </ol>
       </section>
 
-      <section className="glass-final">
-        <p>Seu espaço pede outra perspectiva.</p>
-        <h2>Vamos desenhar a solução certa?</h2>
-        <a href={quoteHref} target="_blank" rel="noreferrer">Iniciar conversa ↗</a>
+      <section className="vetro-final-new">
+        <div className="vetro-final-visual" aria-hidden="true" />
+        <Reveal>
+          <span>VETRO / PROJECT INQUIRY</span>
+          <h2>Quando o detalhe é certo, o limite quase desaparece.</h2>
+          <a href={quoteHref} target="_blank" rel="noreferrer">
+            Iniciar conversa
+            <ArrowUpRight size={17} />
+          </a>
+          <small>VETRO é uma marca demonstrativa criada pela Eminence SiteOps.</small>
+        </Reveal>
       </section>
-
-      <footer className="glass-footer">
-        <span className="glass-brand">VETRO<span>°</span></span>
-        <p>Modelo demonstrativo. Informações e indicadores são fictícios.</p>
-      </footer>
     </main>
   );
 }

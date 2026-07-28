@@ -4,13 +4,16 @@ import test from "node:test";
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
 
-test("renders development preview metadata", async () => {
+async function loadWorker() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
+  return worker;
+}
 
+async function render(worker, pathname) {
   const response = await worker.fetch(
-    new Request("http://localhost/", {
+    new Request(`http://localhost${pathname}`, {
       headers: { accept: "text/html" },
     }),
     {
@@ -23,11 +26,28 @@ test("renders development preview metadata", async () => {
       passThroughOnException() {},
     },
   );
-
   assert.equal(response.status, 200);
   assert.match(
     response.headers.get("content-type") ?? "",
     /^text\/html\b/i,
   );
-  assert.match(await response.text(), developmentPreviewMeta);
+  return response.text();
+}
+
+test("renders development preview metadata", async () => {
+  const worker = await loadWorker();
+  assert.match(await render(worker, "/"), developmentPreviewMeta);
+});
+
+test("renders the experience system routes", async () => {
+  const worker = await loadWorker();
+  const routes = [
+    ["/", /Sites não precisam/],
+    ["/studio", /Direction Studio/],
+    ["/modelos/prime-calhas", /A chuva mostra o problema/],
+    ["/modelos/vetro", /A luz entra/],
+  ];
+  for (const [pathname, expected] of routes) {
+    assert.match(await render(worker, pathname), expected);
+  }
 });

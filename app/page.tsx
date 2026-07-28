@@ -1,263 +1,314 @@
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Boxes,
+  Braces,
+  Gauge,
+  Layers3,
+  Orbit,
+  ScanLine,
+} from "lucide-react";
+import Link from "next/link";
+import { ExperienceScene } from "./components/experience-scene";
+import { Reveal } from "./components/reveal";
+
 const whatsappHref =
-  "https://wa.me/?text=Ol%C3%A1%2C%20quero%20entender%20como%20a%20Eminence%20SiteOps%20pode%20gerar%20mais%20pedidos%20de%20or%C3%A7amento.";
+  "https://wa.me/?text=Ol%C3%A1%2C%20quero%20conversar%20sobre%20uma%20experi%C3%AAncia%20digital%20com%20a%20Eminence%20SiteOps.";
 
-const Arrow = () => <span aria-hidden="true">↗</span>;
-
-const Check = () => (
-  <span className="check" aria-hidden="true">
-    ✓
-  </span>
-);
+const systems = [
+  {
+    index: "01",
+    title: "Prime / Weather System",
+    description:
+      "Uma experiência técnica para telhados e impermeabilização, com diagnóstico visual, urgência controlada e profundidade 3D.",
+    href: "/modelos/prime-calhas",
+    className: "case-roof",
+    category: "INDUSTRIAL / LOCAL SERVICE",
+  },
+  {
+    index: "02",
+    title: "Vetro / Spatial Light",
+    description:
+      "Portfólio arquitetônico onde vidro, luz e precisão viram linguagem digital — sem aparência de template.",
+    href: "/modelos/vetro",
+    className: "case-glass",
+    category: "ARCHITECTURE / MATERIAL",
+  },
+];
 
 export default function Home() {
   return (
-    <main className="siteops">
-      <header className="nav-shell">
-        <a className="brand" href="#inicio" aria-label="Eminence SiteOps — início">
-          <strong>EMINENCE</strong>
-          <span>/</span>
-          <em>SITEOPS</em>
+    <main className="siteops-home">
+      <header className="experience-nav">
+        <a className="experience-brand" href="#top" aria-label="Eminence SiteOps">
+          <span className="brand-orbit" aria-hidden="true">
+            <i />
+          </span>
+          <span>
+            <strong>EMINENCE</strong>
+            <small>SITEOPS / EXPERIENCE ENGINEERING</small>
+          </span>
         </a>
         <nav aria-label="Navegação principal">
-          <a href="#como-funciona">Como funciona</a>
-          <a href="#modelos">Modelos</a>
-          <a href="#inclui">O que inclui</a>
+          <a href="#system">Sistema</a>
+          <a href="#work">Experiências</a>
+          <a href="#stack">Arquitetura</a>
         </nav>
-        <a className="nav-cta" href={whatsappHref} target="_blank" rel="noreferrer">
-          Falar sobre meu site <Arrow />
-        </a>
+        <Link className="nav-lab-link" href="/studio">
+          Abrir Studio
+          <ArrowUpRight size={15} />
+        </Link>
       </header>
 
-      <section className="hero" id="inicio">
-        <div className="hero-media" aria-hidden="true" />
-        <div className="hero-shade" aria-hidden="true" />
-        <div className="hero-grid" aria-hidden="true" />
-        <div className="hero-copy">
-          <p className="eyebrow">Sites que transformam cliques em orçamentos</p>
+      <section className="experience-hero" id="top">
+        <ExperienceScene className="home-scene" mode="siteops" />
+        <div className="experience-grid" aria-hidden="true" />
+        <div className="hero-noise" aria-hidden="true" />
+
+        <div className="experience-hero-copy">
+          <div className="hero-system-label">
+            <span>01 / DIGITAL EXPERIENCE SYSTEM</span>
+            <span>JOINVILLE — BR</span>
+          </div>
           <h1>
-            Seu serviço merece vender antes mesmo da{" "}
-            <span>primeira conversa.</span>
+            Sites não precisam
+            <span>ficar parados.</span>
           </h1>
-          <p className="hero-lead">
-            Sites premium para prestadores locais, conectados ao WhatsApp e
-            construídos para transformar confiança em pedidos de orçamento.
+          <p>
+            Estratégia, direção de arte, motion, 3D e IA organizados em um
+            sistema para construir experiências digitais que não parecem
+            páginas de venda.
           </p>
-          <div className="hero-actions">
-            <a className="button button-primary" href={whatsappHref} target="_blank" rel="noreferrer">
-              Quero receber mais orçamentos <Arrow />
+          <div className="experience-actions">
+            <Link href="/studio" className="experience-button">
+              Criar uma direção
+              <ArrowUpRight size={17} />
+            </Link>
+            <a href="#work" className="experience-text-link">
+              Explorar sistemas <ArrowDown size={15} />
             </a>
-            <a className="button button-secondary" href="#modelos">
-              Ver modelos
-            </a>
-          </div>
-          <div className="founder-note">
-            <span className="founder-star" aria-hidden="true">✦</span>
-            <strong>3 vagas fundadoras</strong>
-            <span>•</span>
-            <span>a partir de R$ 597</span>
           </div>
         </div>
 
-        <aside className="signal-card" aria-label="Exemplo de resultado operacional">
-          <div className="signal-head">
-            <div>
-              <span>Novos orçamentos</span>
-              <small>Últimos 7 dias</small>
-            </div>
-            <div className="signal-total">
-              32 <small>↑ 40%</small>
-            </div>
+        <aside className="hero-instrument">
+          <div className="instrument-head">
+            <Orbit size={17} />
+            <span>LIVE EXPERIENCE ENGINE</span>
+            <i />
           </div>
-          <div className="signal-row">
-            <span className="signal-icon">W</span>
-            <span>Solicitações via WhatsApp</span>
-            <strong>28</strong>
+          <div className="instrument-readout">
+            <span>
+              <small>MOTION</small>
+              <strong>12.42</strong>
+            </span>
+            <span>
+              <small>R3F</small>
+              <strong>09.06</strong>
+            </span>
+            <span>
+              <small>MODE</small>
+              <strong>ADAPT</strong>
+            </span>
           </div>
-          <div className="signal-row">
-            <span className="signal-icon">✓</span>
-            <span>Orçamentos enviados</span>
-            <strong>21</strong>
-          </div>
-          <div className="signal-row">
-            <span className="signal-icon">↗</span>
-            <span>Visitas qualificadas</span>
-            <strong>146</strong>
-          </div>
-          <p>Dados demonstrativos para visualizar o potencial da operação.</p>
+          <p>Toque na escultura. Mova o ponteiro. A interface responde.</p>
         </aside>
-      </section>
 
-      <section className="trust-strip" aria-label="Benefícios principais">
-        <span>Estratégia local</span>
-        <span>Entrega em até 72h</span>
-        <span>Mobile primeiro</span>
-        <span>WhatsApp integrado</span>
-      </section>
-
-      <section className="problem section" id="como-funciona">
-        <div className="section-kicker">01 / O problema</div>
-        <div className="problem-grid">
-          <h2>O cliente já está procurando. A pergunta é: ele escolhe você?</h2>
-          <div className="problem-copy">
-            <p>
-              Um perfil no Instagram mostra atividade. Um site bem construído
-              transforma essa atividade em confiança, contexto e ação.
-            </p>
-            <p>
-              A SiteOps organiza sua oferta para que o cliente entenda o
-              serviço, veja provas e peça orçamento sem depender de uma longa
-              conversa inicial.
-            </p>
-          </div>
-        </div>
-        <div className="loss-grid">
-          <article>
-            <span>01</span>
-            <h3>Presença fragmentada</h3>
-            <p>Fotos, serviços e contato espalhados entre redes e mensagens.</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>Confiança insuficiente</h3>
-            <p>O cliente compara três empresas e escolhe quem parece mais preparado.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Orçamento sem contexto</h3>
-            <p>“Quanto custa?” chega sem fotos, local, urgência ou tipo de serviço.</p>
-          </article>
+        <div className="hero-coordinate" aria-hidden="true">
+          <span>SCENE / 001</span>
+          <i />
+          <span>27°36&apos;S 48°50&apos;W</span>
         </div>
       </section>
 
-      <section className="models section" id="modelos">
-        <div className="section-head">
+      <div className="kinetic-rail" aria-label="Capacidades da plataforma">
+        <div>
+          {[...Array(2)].flatMap((_, copy) =>
+            ["STRATEGY", "ART DIRECTION", "MOTION SYSTEMS", "REAL-TIME 3D", "AI BLUEPRINTS"].map(
+              (item) => (
+                <span key={`${copy}-${item}`}>
+                  {item}
+                  <i>✦</i>
+                </span>
+              ),
+            ),
+          )}
+        </div>
+      </div>
+
+      <section className="system-section" id="system">
+        <Reveal className="section-signal">
+          <span>01 / THE SYSTEM</span>
+          <p>Da ideia à experiência operacional.</p>
+        </Reveal>
+
+        <div className="system-manifesto">
+          <Reveal>
+            <p className="manifesto-mark">“</p>
+            <h2>
+              Luxo digital não é excesso de efeito. É controle sobre{" "}
+              <em>tempo, matéria e atenção.</em>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.12} className="manifesto-side">
+            <p>
+              A SiteOps opera como um atelier técnico: briefing estruturado,
+              sistema visual, movimento com função, 3D adaptativo, geração por
+              IA e validação antes da publicação.
+            </p>
+            <div className="manifesto-rule">
+              <span>ORIGINAL BY DESIGN</span>
+              <i />
+              <span>PERFORMANCE BY DEFAULT</span>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="system-modules">
+          {[
+            [ScanLine, "01", "Diagnóstico", "Objetivo, público, prova e decisão que a experiência precisa provocar."],
+            [Layers3, "02", "Direção", "Composição, tipografia, material e ritmo próprios para cada marca."],
+            [Orbit, "03", "Movimento", "Motion e 3D respondem à hierarquia, ao scroll e ao dispositivo."],
+            [Gauge, "04", "Gate", "Responsividade, acessibilidade, reduced motion, build e performance."],
+          ].map(([Icon, number, title, body], index) => {
+            const ModuleIcon = Icon as typeof ScanLine;
+            return (
+              <Reveal className="system-module" delay={index * 0.06} key={String(number)}>
+                <div>
+                  <ModuleIcon size={20} strokeWidth={1.4} />
+                  <span>{String(number)}</span>
+                </div>
+                <h3>{String(title)}</h3>
+                <p>{String(body)}</p>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="work-section" id="work">
+        <Reveal className="work-heading">
           <div>
-            <div className="section-kicker">02 / Modelos vivos</div>
-            <h2>Não imagine. Entre e veja como o seu negócio pode ser percebido.</h2>
+            <span>02 / SELECTED SYSTEMS</span>
+            <h2>Duas marcas. Dois mundos.</h2>
           </div>
           <p>
-            Dois nichos, duas linguagens visuais e a mesma engenharia de
-            conversão: clareza, prova e um próximo passo impossível de ignorar.
+            Não são skins do mesmo template. Cada demonstração muda composição,
+            material, ritmo e comportamento sem perder a engenharia comum.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="model-grid">
-          <a className="model-card model-roof" href="/modelos/prime-calhas">
-            <div className="model-image">
-              <span className="model-tag">Demonstração 01</span>
-              <span className="model-open">Abrir site <Arrow /></span>
-            </div>
-            <div className="model-info">
-              <div>
-                <small>Telhados • Calhas • Impermeabilização</small>
-                <h3>Prime Calhas</h3>
-              </div>
-              <p>Urgência, segurança e prova técnica para serviços de alto ticket.</p>
-            </div>
-          </a>
-
-          <a className="model-card model-glass" href="/modelos/vetro">
-            <div className="model-image">
-              <span className="model-tag">Demonstração 02</span>
-              <span className="model-open">Abrir site <Arrow /></span>
-            </div>
-            <div className="model-info">
-              <div>
-                <small>Vidraçaria • Box • Esquadrias</small>
-                <h3>Vetro</h3>
-              </div>
-              <p>Acabamento, luz e sofisticação para tornar o portfólio vendável.</p>
-            </div>
-          </a>
+        <div className="experience-cases">
+          {systems.map((system, index) => (
+            <Reveal key={system.href} delay={index * 0.08}>
+              <Link
+                className={`experience-case ${system.className}`}
+                href={system.href}
+              >
+                <div className="case-image" aria-hidden="true">
+                  <span>{system.category}</span>
+                  <i />
+                </div>
+                <div className="case-copy">
+                  <span>{system.index}</span>
+                  <div>
+                    <h3>{system.title}</h3>
+                    <p>{system.description}</p>
+                  </div>
+                  <ArrowUpRight size={27} strokeWidth={1.2} />
+                </div>
+              </Link>
+            </Reveal>
+          ))}
         </div>
-        <p className="demo-disclaimer">
-          Marcas, números e depoimentos dos modelos são demonstrativos e foram
-          criados exclusivamente para apresentar a solução.
-        </p>
       </section>
 
-      <section className="process section">
-        <div className="section-kicker">03 / Processo</div>
-        <div className="process-intro">
-          <h2>Da conversa à página no ar. Sem projeto interminável.</h2>
+      <section className="studio-teaser">
+        <div className="studio-teaser-grid" aria-hidden="true" />
+        <Reveal className="studio-teaser-copy">
+          <span>03 / DIRECTION STUDIO</span>
+          <h2>
+            Transforme um briefing em um sistema de direção{" "}
+            <em>implementável.</em>
+          </h2>
           <p>
-            Você conhece o seu serviço. Nós organizamos esse conhecimento em
-            uma experiência comercial clara e pronta para ser compartilhada.
+            Um laboratório que organiza conceito, paleta, hero, mapa de
+            experiência, motion, 3D, SEO e truth guard. Funciona localmente e
+            ganha geração por IA quando você adiciona um token.
           </p>
-        </div>
-        <ol className="steps">
-          <li>
-            <span>01</span>
-            <div><h3>Diagnóstico</h3><p>Entendemos oferta, cliente ideal, região e principais objeções.</p></div>
-          </li>
-          <li>
-            <span>02</span>
-            <div><h3>Direção</h3><p>Definimos mensagem, visual, provas e caminho para o orçamento.</p></div>
-          </li>
-          <li>
-            <span>03</span>
-            <div><h3>Construção</h3><p>Montamos a página rápida, responsiva e conectada ao WhatsApp.</p></div>
-          </li>
-          <li>
-            <span>04</span>
-            <div><h3>Operação</h3><p>Você recebe a estrutura pronta para divulgar e evoluir.</p></div>
-          </li>
-        </ol>
+          <Link href="/studio">
+            Entrar no Studio
+            <ArrowUpRight size={17} />
+          </Link>
+        </Reveal>
+        <Reveal className="studio-terminal" delay={0.1}>
+          <div>
+            <span>BLUEPRINT / 001</span>
+            <i />
+            <span>STRUCTURED OUTPUT</span>
+          </div>
+          <pre>
+            <code>{`{
+  "concept": "Material intelligence",
+  "motion": "expressive",
+  "threeD": { "enabled": true },
+  "truthGuard": ["no fake proof"]
+}`}</code>
+          </pre>
+          <div className="terminal-status">
+            <span />
+            LOCAL ENGINE READY
+          </div>
+        </Reveal>
       </section>
 
-      <section className="included section" id="inclui">
-        <div className="included-top">
-          <div>
-            <div className="section-kicker">04 / O que inclui</div>
-            <h2>Uma base comercial completa — não apenas uma página bonita.</h2>
-          </div>
-          <div className="included-list">
-            {[
-              "Copy comercial adaptada ao seu nicho",
-              "Design premium e responsivo",
-              "Botões e mensagens para WhatsApp",
-              "Portfólio e provas de confiança",
-              "Estrutura local para Google",
-              "Métricas básicas de acesso e clique",
-            ].map((item) => (
-              <div key={item}><Check /> {item}</div>
-            ))}
-          </div>
+      <section className="architecture-section" id="stack">
+        <Reveal className="architecture-heading">
+          <span>04 / OPEN ARCHITECTURE</span>
+          <h2>Ferramentas fortes. Dependência consciente.</h2>
+        </Reveal>
+        <div className="architecture-grid">
+          {[
+            [Boxes, "REAL-TIME", "Three.js / React Three Fiber / Drei", "Cenas declarativas, adaptativas e progressivas."],
+            [Orbit, "MOTION", "Motion / Lenis / CSS", "Ritmo editorial e feedback com reduced motion."],
+            [Braces, "AI", "AI SDK / OpenRouter / Zod", "Provider substituível, saída estruturada e fallback local."],
+            [Gauge, "RUNTIME", "Next / Vinext / Cloudflare", "Build validado e deploy na borda."],
+          ].map(([Icon, label, title, copy]) => {
+            const StackIcon = Icon as typeof Boxes;
+            return (
+              <Reveal className="architecture-card" key={String(label)}>
+                <StackIcon size={22} strokeWidth={1.25} />
+                <small>{String(label)}</small>
+                <h3>{String(title)}</h3>
+                <p>{String(copy)}</p>
+              </Reveal>
+            );
+          })}
         </div>
-        <div className="offer-card">
-          <div>
-            <span className="offer-label">Condição fundadora</span>
-            <h3>Site de orçamento entregue em até 72 horas.</h3>
-            <p>
-              Para os três primeiros negócios selecionados. Escopo fechado,
-              implantação rápida e acompanhamento no primeiro mês.
-            </p>
-          </div>
-          <div className="price">
-            <small>a partir de</small>
-            <strong>R$ 597</strong>
-            <span>ou 2 etapas de R$ 297 + R$ 300</span>
-          </div>
-          <a className="button button-light" href={whatsappHref} target="_blank" rel="noreferrer">
-            Quero uma análise do meu negócio <Arrow />
+      </section>
+
+      <section className="contact-section">
+        <div className="contact-orbit" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
+        <Reveal>
+          <span>05 / NEXT EXPERIENCE</span>
+          <h2>Uma marca memorável merece um sistema que se move com ela.</h2>
+          <a href={whatsappHref} target="_blank" rel="noreferrer">
+            Iniciar conversa
+            <ArrowUpRight size={18} />
           </a>
-        </div>
+        </Reveal>
       </section>
 
-      <section className="final-cta">
-        <p className="eyebrow">Seu próximo cliente pode estar pesquisando agora</p>
-        <h2>Vamos construir o site que faz ele parar, confiar e chamar.</h2>
-        <a className="button button-primary" href={whatsappHref} target="_blank" rel="noreferrer">
-          Falar com a Eminence SiteOps <Arrow />
+      <footer className="experience-footer">
+        <a className="experience-brand" href="#top">
+          <span className="brand-orbit"><i /></span>
+          <span><strong>EMINENCE</strong><small>SITEOPS</small></span>
         </a>
-      </section>
-
-      <footer>
-        <a className="brand" href="#inicio">
-          <strong>EMINENCE</strong><span>/</span><em>SITEOPS</em>
-        </a>
-        <p>Sites de alta conversão para negócios locais.</p>
-        <span>Joinville • Santa Catarina</span>
+        <p>Experience engineering / Joinville — Brasil</p>
+        <span>© 2026 / ORIGINAL BY DESIGN</span>
       </footer>
     </main>
   );
