@@ -7,6 +7,7 @@ export type { Audit } from "./audit.ts";
 export {
   computeCommercialScore,
   mockAuditForScoring,
+  priorityLabelFromOverall,
   priorityLabelSchema,
 } from "./score.ts";
 export type { PriorityLabel, ScoringInput } from "./score.ts";
@@ -44,3 +45,16 @@ export {
   buildTechnicalRisks,
   generateBriefing,
 } from "./briefing-generator.ts";
+
+export {
+  HUMAN_APPROVAL_NOTE,
+  buildBusinessSummary,
+  generateProposalFromBriefing,
+  mockProposal,
+  priorityLabelToPt,
+  proposalMetaSchema,
+  proposalSchema,
+  recommendedSitePlanSchema,
+  renderProposalMarkdown,
+} from "./proposal.ts";
+export type { Proposal } from "./proposal.ts";

@@ -95,6 +95,17 @@ export const priorityLabelSchema = z.enum(["low", "medium", "high", "urgent"]);
 
 export type PriorityLabel = z.infer<typeof priorityLabelSchema>;
 
+/** Maps an overall score (0..100) to the commercial priority label. */
+export function priorityLabelFromOverall(overall: number): PriorityLabel {
+  return overall >= 80
+    ? "urgent"
+    : overall >= 65
+      ? "high"
+      : overall >= 45
+        ? "medium"
+        : "low";
+}
+
 export function computeCommercialScore(input: ScoringInput): {
   digitalPresence: number;
   performance: number;
@@ -123,14 +134,7 @@ export function computeCommercialScore(input: ScoringInput): {
       100,
   );
 
-  const priorityLabel: PriorityLabel =
-    overall >= 80
-      ? "urgent"
-      : overall >= 65
-        ? "high"
-        : overall >= 45
-          ? "medium"
-          : "low";
+  const priorityLabel = priorityLabelFromOverall(overall);
 
   return {
     digitalPresence,
