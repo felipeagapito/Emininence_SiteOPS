@@ -59,7 +59,7 @@ Philippe, Ferrari or another protected brand.
 
 Before changing the repo toward the Money Engine direction, read:
 
-1. `docs/SITEOPS_MONEY_ENGINE_INDEX.md`
+1. `docs/00_SITEOPS_MONEY_ENGINE_INDEX.md`
 2. `docs/00_PRODUCT_BRIEF.md`
 3. `docs/01_MVP_SCOPE.md`
 4. `docs/02_ARCHITECTURE.md`
