@@ -11,6 +11,8 @@ import {
   renderProposalMarkdown,
   HUMAN_APPROVAL_NOTE,
 } from "../lib/money/proposal";
+import { serializeBriefing } from "../lib/money/export";
+import { ExportButtons } from "./export-buttons";
 
 // ---------------------------------------------------------------------------
 // Deterministic pipeline — mock data flows through score → briefing → proposal
@@ -20,6 +22,7 @@ const score = computeCommercialScore(mockAuditForScoring);
 const briefing = generateBriefing(mockLead, mockAudit, score);
 const proposal = generateProposalFromBriefing(briefing);
 const proposalMarkdown = renderProposalMarkdown(proposal);
+const briefingJson = serializeBriefing(briefing);
 
 const auditFlags: [string, boolean][] = [
   ["Site existente", mockAudit.websiteExists],
@@ -192,6 +195,9 @@ export default function MoneyPage() {
           ))}
         </ul>
       </section>
+
+      {/* ── Export ────────────────────────────────────────────────────── */}
+      <ExportButtons briefingJson={briefingJson} proposalMd={proposalMarkdown} />
 
       {/* ── Proposal ──────────────────────────────────────────────────── */}
       <section className="money-section">

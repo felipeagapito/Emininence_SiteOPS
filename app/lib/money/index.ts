@@ -58,3 +58,8 @@ export {
   renderProposalMarkdown,
 } from "./proposal.ts";
 export type { Proposal } from "./proposal.ts";
+
+export {
+  generateProposalMarkdown,
+  serializeBriefing,
+} from "./export.ts";
