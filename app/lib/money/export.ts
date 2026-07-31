@@ -19,3 +19,6 @@ export function generateProposalMarkdown(briefing: Briefing): string {
   const proposal = generateProposalFromBriefing(briefing);
   return renderProposalMarkdown(proposal);
 }
+
+/** Generates the site-build-prompt.md handoff from a briefing in one call. */
+export { generateSiteBuildPrompt } from "./prompt.ts";
