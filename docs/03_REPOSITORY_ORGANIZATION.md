@@ -33,7 +33,7 @@ site-clinica-x-curitiba
 
 ```txt
 docs/
-  SITEOPS_MONEY_ENGINE_INDEX.md
+  00_SITEOPS_MONEY_ENGINE_INDEX.md
   00_PRODUCT_BRIEF.md
   01_MVP_SCOPE.md
   02_ARCHITECTURE.md
@@ -68,7 +68,7 @@ Ao iniciar uma tarefa, Claude deve listar se encontrou:
 
 - `CLAUDE.md`;
 - `README.md`;
-- `docs/00_SITEOPS_MONEY_ENGINE_INDEX.md`;
+- `docs/00_00_SITEOPS_MONEY_ENGINE_INDEX.md`;
 - docs de arquitetura e escopo;
 - docs de backend cleanup;
 - docs de Omniroute;
