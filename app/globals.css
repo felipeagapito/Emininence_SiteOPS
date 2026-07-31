@@ -2876,6 +2876,219 @@ textarea:focus-visible {
   color: #546473;
 }
 
+/* ───────────────────────────── MONEY ENGINE — MANUAL ENTRY */
+
+.money-header-note {
+  max-width: 640px;
+  margin: -18px 0 0;
+  color: #7d8a97;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.money-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.money-form-col {
+  padding: 36px clamp(18px, 5vw, 95px);
+}
+
+.money-form-col + .money-form-col {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.money-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.money-field > label,
+.money-lighthouse-title {
+  color: #5a7488;
+  font-family: var(--font-geist-mono);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.money-field > label em {
+  color: #ff6b6b;
+  font-style: normal;
+}
+
+.money-field input,
+.money-field textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #263543;
+  border-radius: 0;
+  outline: 0;
+  background: #070b11;
+  color: #d9e5ed;
+  font-size: 12px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.money-field textarea {
+  min-height: 64px;
+}
+
+.money-field input:focus,
+.money-field textarea:focus {
+  border-color: #279fdf;
+}
+
+.money-check-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.money-check {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a4b0bc;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.money-check input {
+  width: 15px;
+  height: 15px;
+  accent-color: #199fe9;
+}
+
+.money-lighthouse-title {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.money-lh-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.money-form-actions {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.money-generate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 47px;
+  padding: 0 22px;
+  border: 1px solid #1da5ed;
+  background: #0c74b1;
+  color: white;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.money-generate:hover {
+  background: #0d86c9;
+}
+
+.money-reset {
+  margin-left: 14px;
+  padding: 9px 12px;
+  border: 1px solid #293a48;
+  background: transparent;
+  color: #7d8a97;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.money-form-error {
+  grid-column: 1 / -1;
+  margin: 0 clamp(18px, 5vw, 95px) 24px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  background: rgba(255, 107, 107, 0.08);
+  color: #ff8f8f;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.money-result {
+  grid-column: 1 / -1;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.money-result-score {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 36px clamp(18px, 5vw, 95px) 12px;
+}
+
+.money-result-score .money-score-grid {
+  max-width: 540px;
+}
+
+.money-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 20px clamp(18px, 5vw, 95px) 0;
+}
+
+.money-tab {
+  padding: 9px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: #7d8a97;
+  font-family: var(--font-geist-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition:
+    border-color 200ms ease,
+    color 200ms ease,
+    background 200ms ease;
+}
+
+.money-tab:hover {
+  border-color: var(--blue);
+  color: #e9f8ff;
+}
+
+.money-tab.is-active {
+  border-color: var(--blue);
+  color: #e9f8ff;
+  background: rgba(19, 152, 226, 0.12);
+}
+
+.money-artifact {
+  padding: 20px clamp(18px, 5vw, 95px) 40px;
+}
+
+.money-artifact pre {
+  max-height: 560px;
+  overflow: auto;
+}
+
 @media (max-width: 900px) {
   .money-dash {
     grid-template-columns: 1fr;
@@ -2890,6 +3103,20 @@ textarea:focus-visible {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .money-form {
+    grid-template-columns: 1fr;
+  }
+
+  .money-form-col + .money-form-col {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .money-result-score {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
   .money-footer {
     flex-direction: column;
     gap: 12px;
@@ -2899,6 +3126,11 @@ textarea:focus-visible {
 
 @media (max-width: 640px) {
   .money-flag-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .money-check-grid,
+  .money-lh-grid {
     grid-template-columns: 1fr;
   }
 

@@ -47,6 +47,7 @@ test("renders the experience system routes", async () => {
     ["/modelos/prime-calhas", /A chuva mostra o problema/],
     ["/modelos/vetro", /A luz entra/],
     ["/money", /Calhas Silva/],
+    ["/money/manual", /Entrada manual/],
   ];
   for (const [pathname, expected] of routes) {
     assert.match(await render(worker, pathname), expected);
