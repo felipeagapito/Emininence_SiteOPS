@@ -54,3 +54,20 @@ Philippe, Ferrari or another protected brand.
 - `openrouter/free` is for evaluation, not SLA;
 - preserve the deterministic local generator in `/studio`;
 - preserve `truthGuard`.
+
+## SiteOps Money Engine docs
+
+Before changing the repo toward the Money Engine direction, read:
+
+1. `docs/SITEOPS_MONEY_ENGINE_INDEX.md`
+2. `docs/00_PRODUCT_BRIEF.md`
+3. `docs/01_MVP_SCOPE.md`
+4. `docs/02_ARCHITECTURE.md`
+5. `docs/03_REPOSITORY_ORGANIZATION.md`
+6. `docs/04_BACKEND_CLEANUP_DECISION.md`
+7. `docs/05_INTEGRATIONS_MAXUN_FIRECRAWL_LIGHTHOUSE.md`
+8. `docs/06_OMNIROUTE_AI_LAYER.md`
+9. `docs/07_SITE_BUILDER_HANDOFF.md`
+10. `docs/08_CLAUDE_REPOSITORY_AUDIT_PROMPT.md`
+
+Current product decision: use this repo first as a commercial intelligence cockpit that finds local leads, audits their digital presence, scores urgency, generates proposals, and exports a site-building handoff. Do not turn it into a full internal site builder in the MVP.
