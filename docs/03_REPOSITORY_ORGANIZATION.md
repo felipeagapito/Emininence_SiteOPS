@@ -68,7 +68,7 @@ Ao iniciar uma tarefa, Claude deve listar se encontrou:
 
 - `CLAUDE.md`;
 - `README.md`;
-- `docs/SITEOPS_MONEY_ENGINE_INDEX.md`;
+- `docs/00_SITEOPS_MONEY_ENGINE_INDEX.md`;
 - docs de arquitetura e escopo;
 - docs de backend cleanup;
 - docs de Omniroute;
