@@ -12,6 +12,7 @@ import {
   HUMAN_APPROVAL_NOTE,
 } from "../lib/money/proposal";
 import { serializeBriefing } from "../lib/money/export";
+import { generateSiteBuildPrompt } from "../lib/money/prompt";
 import { ExportButtons } from "./export-buttons";
 
 // ---------------------------------------------------------------------------
@@ -23,6 +24,7 @@ const briefing = generateBriefing(mockLead, mockAudit, score);
 const proposal = generateProposalFromBriefing(briefing);
 const proposalMarkdown = renderProposalMarkdown(proposal);
 const briefingJson = serializeBriefing(briefing);
+const siteBuildPromptMd = generateSiteBuildPrompt(briefing);
 
 const auditFlags: [string, boolean][] = [
   ["Site existente", mockAudit.websiteExists],
@@ -197,7 +199,11 @@ export default function MoneyPage() {
       </section>
 
       {/* ── Export ────────────────────────────────────────────────────── */}
-      <ExportButtons briefingJson={briefingJson} proposalMd={proposalMarkdown} />
+      <ExportButtons
+        briefingJson={briefingJson}
+        proposalMd={proposalMarkdown}
+        siteBuildPromptMd={siteBuildPromptMd}
+      />
 
       {/* ── Proposal ──────────────────────────────────────────────────── */}
       <section className="money-section">

@@ -60,6 +60,10 @@ export {
 export type { Proposal } from "./proposal.ts";
 
 export {
+  generateSiteBuildPrompt,
+} from "./prompt.ts";
+
+export {
   generateProposalMarkdown,
   serializeBriefing,
 } from "./export.ts";

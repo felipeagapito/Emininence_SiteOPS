@@ -5,6 +5,7 @@ import { useState } from "react";
 interface ExportButtonsProps {
   briefingJson: string;
   proposalMd: string;
+  siteBuildPromptMd: string;
 }
 
 function downloadText(content: string, filename: string) {
@@ -18,10 +19,10 @@ function downloadText(content: string, filename: string) {
 }
 
 /** Read-only export actions: copy to clipboard or download the artifacts. */
-export function ExportButtons({ briefingJson, proposalMd }: ExportButtonsProps) {
-  const [copied, setCopied] = useState<"briefing" | "proposal" | null>(null);
+export function ExportButtons({ briefingJson, proposalMd, siteBuildPromptMd }: ExportButtonsProps) {
+  const [copied, setCopied] = useState<"briefing" | "proposal" | "prompt" | null>(null);
 
-  async function copy(content: string, kind: "briefing" | "proposal") {
+  async function copy(content: string, kind: "briefing" | "proposal" | "prompt") {
     await navigator.clipboard.writeText(content);
     setCopied(kind);
     setTimeout(() => setCopied(null), 1500);
@@ -42,6 +43,12 @@ export function ExportButtons({ briefingJson, proposalMd }: ExportButtonsProps) 
         </button>
         <button type="button" onClick={() => downloadText(proposalMd, "proposal.md")}>
           Baixar proposal.md
+        </button>
+        <button type="button" onClick={() => copy(siteBuildPromptMd, "prompt")}>
+          {copied === "prompt" ? "Copiado!" : "Copiar site-build-prompt.md"}
+        </button>
+        <button type="button" onClick={() => downloadText(siteBuildPromptMd, "site-build-prompt.md")}>
+          Baixar site-build-prompt.md
         </button>
       </div>
     </div>
