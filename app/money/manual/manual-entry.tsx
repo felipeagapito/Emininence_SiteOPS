@@ -71,14 +71,13 @@ const AUDIT_CHECKS: { key: keyof ManualAuditInput; label: string }[] = [
   { key: "hasGoogleMapsEmbed", label: "Embed do Google Maps" },
 ];
 
-const LIGHTHOUSE_FIELDS: {
-  key:
-    | "performanceScore"
-    | "accessibilityScore"
-    | "seoScore"
-    | "bestPracticesScore";
-  label: string;
-}[] = [
+type LighthouseScoreKey =
+  | "performanceScore"
+  | "accessibilityScore"
+  | "seoScore"
+  | "bestPracticesScore";
+
+const LIGHTHOUSE_FIELDS: { key: LighthouseScoreKey; label: string }[] = [
   { key: "performanceScore", label: "Performance" },
   { key: "accessibilityScore", label: "Acessibilidade" },
   { key: "seoScore", label: "SEO" },
@@ -106,6 +105,22 @@ export function ManualEntry() {
 
   function updateAudit(field: keyof ManualAuditInput, value: string | boolean) {
     setAudit((prev) => ({ ...prev, [field]: value }));
+  }
+
+  /**
+   * Mirrors the pipeline's `scoreOrNull` clamping on blur so the value the
+   * user sees equals the value the score actually uses: out-of-range becomes
+   * the nearest limit, empty/invalid becomes empty (no score).
+   */
+  function clampLighthouseField(field: LighthouseScoreKey) {
+    setAudit((prev) => {
+      const raw = String(prev[field]).trim();
+      if (raw === "") return { ...prev, [field]: "" };
+      const parsed = Number(raw);
+      if (!Number.isFinite(parsed)) return { ...prev, [field]: "" };
+      const clamped = Math.max(0, Math.min(100, Math.round(parsed)));
+      return { ...prev, [field]: String(clamped) };
+    });
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -218,15 +233,19 @@ export function ManualEntry() {
                 id={`audit-${field.key}`}
                 name={`audit-${field.key}`}
                 type="number"
-                min={0}
-                max={100}
                 inputMode="numeric"
                 value={audit[field.key]}
                 onChange={(event) => updateAudit(field.key, event.target.value)}
+                onBlur={() => clampLighthouseField(field.key)}
               />
             </div>
           ))}
         </div>
+
+        <p className="money-lh-note">
+          Valores fora de 0-100 sao ajustados para o limite; campo vazio ou
+          invalido fica sem nota.
+        </p>
 
         <div className="money-field">
           <label htmlFor="audit-notes">Observacoes de usabilidade</label>

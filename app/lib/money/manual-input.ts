@@ -64,8 +64,15 @@ function scoreOrNull(value: string): number | null {
   return Math.max(0, Math.min(100, Math.round(parsed)));
 }
 
+/**
+ * Builds an entity ID from a millisecond-precision timestamp. The ID stays a
+ * pure function of `now` so the pipeline remains deterministic: the same input
+ * at the same instant reproduces the same artifacts. The old `slice(0, 14)`
+ * truncated to seconds, so two submissions inside one second collided; keeping
+ * the full digits preserves the milliseconds and keeps those apart.
+ */
 function timestampId(prefix: string, now: string): string {
-  return `${prefix}_${now.replace(/\D/g, "").slice(0, 14)}`;
+  return `${prefix}_${now.replace(/\D/g, "")}`;
 }
 
 /** Builds a validated `Lead` from the manual form. Throws if invalid. */
