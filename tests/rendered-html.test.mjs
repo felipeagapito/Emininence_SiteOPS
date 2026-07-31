@@ -53,3 +53,9 @@ test("renders the experience system routes", async () => {
     assert.match(await render(worker, pathname), expected);
   }
 });
+
+test("renders the Lighthouse clamp note on the manual entry", async () => {
+  const worker = await loadWorker();
+  const html = await render(worker, "/money/manual");
+  assert.match(html, /Valores fora de 0-100 sao ajustados para o limite/);
+});

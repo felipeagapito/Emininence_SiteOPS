@@ -69,6 +69,23 @@ test("buildManualLead throws on missing business name", () => {
   assert.throws(() => buildManualLead({ ...leadInput, businessName: " " }, FIXED_NOW));
 });
 
+test("IDs carry full millisecond precision and stay unique per submission", () => {
+  const early = buildManualLead(leadInput, "2026-07-31T10:00:00.000Z");
+  const later = buildManualLead(leadInput, "2026-07-31T10:00:00.500Z");
+  assert.equal(early.id, "lead_20260731100000000");
+  assert.equal(later.id, "lead_20260731100000500");
+  assert.notEqual(early.id, later.id);
+  const audit = buildManualAudit(auditInput, early.id, "2026-07-31T10:00:00.000Z");
+  assert.equal(audit.id, "audit_20260731100000000");
+  assert.equal(audit.leadId, early.id);
+});
+
+test("IDs stay deterministic for the same timestamp", () => {
+  const a = buildManualLead(leadInput, FIXED_NOW);
+  const b = buildManualLead(leadInput, FIXED_NOW);
+  assert.equal(a.id, b.id);
+});
+
 // ---------------------------------------------------------------------------
 // buildManualAudit
 // ---------------------------------------------------------------------------
@@ -114,6 +131,11 @@ test("buildManualArtifacts is deterministic for the same inputs", () => {
   const a = buildManualArtifacts(leadInput, auditInput, FIXED_NOW);
   const b = buildManualArtifacts(leadInput, auditInput, FIXED_NOW);
   assert.deepEqual(a, b);
+});
+
+test("audit references the generated lead id", () => {
+  const { lead, audit } = buildManualArtifacts(leadInput, auditInput, FIXED_NOW);
+  assert.equal(audit.leadId, lead.id);
 });
 
 test("artifacts are well-formed and carry the business name", () => {
