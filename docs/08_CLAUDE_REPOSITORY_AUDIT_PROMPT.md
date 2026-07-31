@@ -14,7 +14,7 @@ Encontrar leads locais, auditar presenca digital, gerar score comercial, diagnos
 Antes de qualquer codigo:
 1. Leia CLAUDE.md.
 2. Leia README.md.
-3. Leia docs/SITEOPS_MONEY_ENGINE_INDEX.md.
+3. Leia docs/00_SITEOPS_MONEY_ENGINE_INDEX.md.
 4. Leia todos os docs listados no indice.
 5. Liste quais documentos tecnicos voce encontrou.
 6. Liste quais documentos esperados estao ausentes.
