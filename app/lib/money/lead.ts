@@ -23,7 +23,7 @@ export const leadSchema = z.object({
   email: z.string().optional(),
   websiteUrl: z.string().optional(),
   googleMapsUrl: z.string().optional(),
-  source: z.enum(["manual", "csv", "maxun", "other"]),
+  source: z.enum(["manual", "csv", "maxun", "other", "url"]),
   status: leadStatusSchema,
   notes: z.string().optional(),
   createdAt: z.string(),

@@ -5,12 +5,31 @@ export { auditSchema, auditModeSchema, mockAudit } from "./audit.ts";
 export type { Audit } from "./audit.ts";
 
 export {
+  evidenceConfidenceSchema,
+  evidenceSchema,
+  evidenceStatusSchema,
+  booleanToStatus,
+  statusOf,
+  statusToBoolean,
+  evidenceByKey,
+  auditToEvidence,
+} from "./evidence.ts";
+export type { Evidence, EvidenceConfidence, EvidenceStatus } from "./evidence.ts";
+
+export {
+  auditToScoringInput,
   computeCommercialScore,
+  computeDualScore,
   mockAuditForScoring,
   priorityLabelFromOverall,
   priorityLabelSchema,
 } from "./score.ts";
-export type { PriorityLabel, ScoringInput } from "./score.ts";
+export type {
+  DualScore,
+  LighthouseScores,
+  PriorityLabel,
+  ScoringInput,
+} from "./score.ts";
 
 export {
   ACCEPTANCE_CRITERIA,
@@ -67,3 +86,25 @@ export {
   generateProposalMarkdown,
   serializeBriefing,
 } from "./export.ts";
+
+export {
+  urlAuditRequestSchema,
+  normalizeUrl,
+  fetchUrlHtml,
+  buildUrlAuditArtifacts,
+} from "./url-audit.ts";
+
+export {
+  auditCategorySchema,
+  auditCategoryScoreSchema,
+  auditCategoryLabel,
+  siteAuditReportSchema,
+  scoreCategoriesFromEvidence,
+  computeOverallScore,
+  buildSiteAuditReport,
+} from "./scoring.ts";
+export type {
+  AuditCategory,
+  AuditCategoryScore,
+  SiteAuditReport,
+} from "./scoring.ts";

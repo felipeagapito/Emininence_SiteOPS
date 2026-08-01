@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // External reference repos (never committed, never linted):
+    "external/**",
   ]),
 ]);
 

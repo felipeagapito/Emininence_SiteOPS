@@ -1,4 +1,6 @@
 import { z } from "zod";
+import { evidenceSchema } from "./evidence.ts";
+import { dualScoreSchema } from "./score.ts";
 
 // ---------------------------------------------------------------------------
 // Fixed project / content constants (see 06_SITE_BUILDER_HANDOFF.md)
@@ -75,6 +77,10 @@ export const diagnosisSchema = z.object({
   technicalRisks: z.array(z.string()),
   opportunities: z.array(z.string()),
   score: briefingScoreSchema,
+  scores: dualScoreSchema.optional(),
+  evidence: z.array(evidenceSchema).optional(),
+  unconfirmedPoints: z.array(z.string()).optional(),
+  requiresHumanReview: z.boolean().optional(),
 });
 
 export const sitePlanSchema = z.object({

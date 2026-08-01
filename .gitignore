@@ -28,14 +28,28 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
+.env
+.env.local
 .env*
 !.env.example
 
 # vercel
 .vercel
 
+# external reference repos (downloaded, never committed)
+/external/repos/
+
+# local Claude Code settings (machine-specific, never committed)
+.claude/settings.local.json
+
+# ephemeral audit / analysis output
+/reports/tmp/
+/playwright-report/
+/test-results/
+
 # typescript
 next-env.d.ts
+*.tsbuildinfo
 /dist/
 /.wrangler/
 /.sites-runtime/

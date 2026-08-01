@@ -2769,6 +2769,78 @@ textarea:focus-visible {
   background: var(--blue);
 }
 
+.money-category-summary {
+  grid-column: 1 / -1;
+  margin-top: -6px;
+  color: #6f7c89;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+/* ── Evidence chips (audit page) ─────────────────────────────────────── */
+
+.money-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 12px;
+}
+
+.money-evidence-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.2s;
+}
+
+.money-evidence-chip:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.money-evidence-label {
+  color: #cdd5dd;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.money-evidence-status {
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  align-self: flex-start;
+}
+
+.money-evidence-status--yes {
+  background: rgba(84, 232, 178, 0.12);
+  color: #54e8b2;
+}
+
+.money-evidence-status--partial {
+  background: rgba(255, 190, 60, 0.12);
+  color: #ffbe3c;
+}
+
+.money-evidence-status--no {
+  background: rgba(255, 107, 107, 0.12);
+  color: #ff6b6b;
+}
+
+.money-evidence-status--unknown {
+  background: rgba(255, 255, 255, 0.06);
+  color: #6f7c89;
+}
+
+.money-evidence-confidence {
+  color: #545e6a;
+  font-size: 10px;
+}
+
 .money-section {
   padding: 48px clamp(18px, 5vw, 95px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);

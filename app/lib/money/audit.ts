@@ -6,6 +6,7 @@ export const auditModeSchema = z.enum([
   "firecrawl",
   "lighthouse",
   "combined",
+  "url",
 ]);
 
 export const auditSchema = z.object({

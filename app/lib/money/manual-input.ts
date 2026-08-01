@@ -4,6 +4,9 @@ import type { Audit } from "./audit.ts";
 import { auditSchema } from "./audit.ts";
 import { computeCommercialScore } from "./score.ts";
 import type { ScoringInput } from "./score.ts";
+import { computeDualScore } from "./score.ts";
+import type { DualScore } from "./score.ts";
+import { auditToEvidence } from "./evidence.ts";
 import type { Briefing } from "./briefing.ts";
 import { generateBriefing } from "./briefing-generator.ts";
 import {
@@ -149,6 +152,7 @@ export type ManualArtifacts = {
   lead: Lead;
   audit: Audit;
   score: ReturnType<typeof computeCommercialScore>;
+  dualScore: DualScore;
   briefing: Briefing;
   briefingJson: string;
   proposalMd: string;
@@ -168,11 +172,19 @@ export function buildManualArtifacts(
   const lead = buildManualLead(leadInput, now);
   const audit = buildManualAudit(auditInput, lead.id, now);
   const score = computeCommercialScore(toScoringInput(audit));
+  const evidence = auditToEvidence(audit);
+  const dualScore = computeDualScore(evidence, {
+    performanceScore: audit.performanceScore,
+    seoScore: audit.seoScore,
+    accessibilityScore: audit.accessibilityScore,
+    bestPracticesScore: audit.bestPracticesScore,
+  });
   const briefing = generateBriefing(lead, audit, score);
   return {
     lead,
     audit,
     score,
+    dualScore,
     briefing,
     briefingJson: serializeBriefing(briefing),
     proposalMd: generateProposalMarkdown(briefing),
